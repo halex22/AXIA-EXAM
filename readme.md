@@ -3,7 +3,7 @@
 Questo documento descrive i tre progetti d’esame con i relativi requisiti di base e i task aggiuntivi.
 ---
 
-## 🧾 **Prova 1 – To-Do List**
+# 🧾 **Prova 1 – To-Do List**
 
 ### **Database (PostgreSQL)**
 Crea la tabella:
@@ -14,7 +14,9 @@ CREATE TABLE todo (
   completed BOOLEAN DEFAULT FALSE,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+```
 API (C#)
+
 Implementa un’API con i seguenti endpoint:
 
 GET /todos – restituisce tutti i todo
@@ -30,14 +32,14 @@ Form per aggiungere un nuovo todo
 
 Servizio che comunica con l’API per le operazioni CRUD
 
-Task aggiuntivo 1
+## **Task aggiuntivo 1**
 Aggiungi tabella category (id, name)
 
 Crea relazione uno-a-molti tra category e todo
 
 Popola la tabella category con alcune categorie predefinite
 
-Task aggiuntivo 2
+##  **Task aggiuntivo 2**
 Nel frontend aggiungi un filtro a tendina per categoria
 
 Mostra solo i todo della categoria selezionata
@@ -46,8 +48,7 @@ Mostra solo i todo della categoria selezionata
 Database (PostgreSQL)
 Crea la tabella:
 
-sql
-Copy code
+```sql
 CREATE TABLE contact (
   id SERIAL PRIMARY KEY,
   first_name VARCHAR(100),
@@ -55,6 +56,7 @@ CREATE TABLE contact (
   email VARCHAR(255),
   phone VARCHAR(50)
 );
+```
 API (C#)
 Endpoint richiesti:
 
@@ -85,14 +87,14 @@ Mostra solo i contatti appartenenti al gruppo selezionato
 Database (PostgreSQL)
 Crea la tabella:
 
-sql
-Copy code
+```sql
 CREATE TABLE post (
   id SERIAL PRIMARY KEY,
   title VARCHAR(255) NOT NULL,
   body TEXT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+```
 API (C#)
 Endpoint richiesti:
 
