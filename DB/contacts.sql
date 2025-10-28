@@ -1,6 +1,6 @@
-create DATABASE contactsDB;
+create DATABASE contact_db;
 
-\c contactsDB;
+\c contact_db;
 
 create table if not exists groups (
     id serial primary key,
@@ -18,6 +18,6 @@ create table if not exists contacts (
 create table if not exists group_contact (
     id serial primary key,
     group_id int references groups(id),
-    contact_id int references contacts(id)
+    contact_id int references contacts(id),
     constraint unique_group_contact unique (group_id, contact_id)
 );
