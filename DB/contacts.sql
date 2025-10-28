@@ -2,12 +2,12 @@ create DATABASE contactsDB;
 
 \c contactsDB;
 
-create table groups (
+create table if not exists groups (
     id serial primary key,
     name varchar(255) unique 
 );
 
-create table contacts (
+create table if not exists contacts (
     id serial primary key,
     first_name varchar(255) not null,
     last_name varchar(255),
@@ -15,7 +15,7 @@ create table contacts (
     constraint unique_fullname unique (first_name, last_name)
 );
 
-create table group_contact (
+create table if not exists group_contact (
     id serial primary key,
     group_id int references groups(id),
     contact_id int references contacts(id)

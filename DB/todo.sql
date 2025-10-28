@@ -1,19 +1,19 @@
 
-CREATE DATABASE todoDB;
+CREATE DATABASE todo_db;
 
-\c todoDB;
+\c todo_db;
 
-CREATE TABLE category (
+create table if not exists category (
   id SERIAL PRIMARY KEY,
   category_name VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE todo (
+create table if not exists todo (
   id SERIAL PRIMARY KEY,
   title VARCHAR(255) NOT NULL,
   completed BOOLEAN DEFAULT FALSE,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  category_id INT REFERENCES category(id)
+  category_id INT REFERENCES category(id),
   CONSTRAINT unique_title_per_category UNIQUE (title, category_id)
 );
 
