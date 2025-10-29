@@ -17,6 +17,7 @@ create table if not exists todo (
   CONSTRAINT unique_title_per_category UNIQUE (title, category_id)
 );
 
+create index idx_todo_category_id on todo(category_id);
 
 INSERT INTO category (category_name) VALUES
 ('Work'),
