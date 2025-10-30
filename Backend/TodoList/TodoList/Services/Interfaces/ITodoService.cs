@@ -7,7 +7,7 @@ namespace TodoList.Services.Interfaces
     {
         public Task<IEnumerable<TodoDTO>> GetAllTodos();
         public Task<TodoDTO> CreateNewTodo(TodoCreateDTO rawTodo);
-        public Task<int> DeleteTodo(int id);
+        public Task DeleteTodo(int id);
         public Task<IEnumerable<TodoDTO>> GetTodosByCategory(int categoryId);
     }
 }

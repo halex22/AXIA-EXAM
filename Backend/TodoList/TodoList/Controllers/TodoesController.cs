@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TodoList.Mode;
+using TodoList.Mode.DTO;
+using TodoList.Services.Interfaces;
 
 namespace TodoList.Controllers
 {
@@ -14,17 +16,26 @@ namespace TodoList.Controllers
     public class TodoesController : ControllerBase
     {
         private readonly TodoDbContext _context;
+        private readonly ITodoService _todoService;
 
-        public TodoesController(TodoDbContext context)
+        public TodoesController(TodoDbContext context, ITodoService todoService)
         {
             _context = context;
+            _todoService = todoService;
         }
 
         // GET: api/Todoes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Todo>>> GetTodos()
+        public async Task<IActionResult> GetTodos()
         {
-            return await _context.Todos.ToListAsync();
+            var result = await _todoService.GetAllTodos();  
+            return Ok(result);
+        }
+        // GET: api/Todoes/by-category/{id}
+        public async Task<IActionResult> GetTodosByCategory(int categoryId)
+        {
+            var result = await _todoService.GetTodosByCategory(categoryId);
+            return Ok(result);
         }
 
         // GET: api/Todoes/5
@@ -75,28 +86,39 @@ namespace TodoList.Controllers
         // POST: api/Todoes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Todo>> PostTodo(Todo todo)
+        public async Task<IActionResult> PostTodo(TodoCreateDTO newtodo)
         {
-            _context.Todos.Add(todo);
-            await _context.SaveChangesAsync();
+            try
+            {
+                var todo = await _todoService.CreateNewTodo(newtodo);
+                return CreatedAtAction("GetTodo", new { id = todo.Id }, todo);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    new { message = "A concurrency error occurred while saving the Todo." });
+            }
+            catch (ArgumentNullException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
 
-            return CreatedAtAction("GetTodo", new { id = todo.Id }, todo);
         }
 
         // DELETE: api/Todoes/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTodo(int id)
         {
-            var todo = await _context.Todos.FindAsync(id);
-            if (todo == null)
+            try
+            {
+                await _todoService.DeleteTodo(id);
+                return NoContent();
+            }
+            catch (KeyNotFoundException)
             {
                 return NotFound();
             }
 
-            _context.Todos.Remove(todo);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
         }
 
         private bool TodoExists(int id)

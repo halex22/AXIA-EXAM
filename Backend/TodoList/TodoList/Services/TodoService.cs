@@ -33,9 +33,16 @@ namespace TodoList.Services
 
         }
 
-        public Task<int> DeleteTodo(int id)
+        public async Task DeleteTodo(int id)
         {
-            throw new NotImplementedException();
+            var todo = await _context.Todos.FirstOrDefaultAsync(t => t.Id == id);
+            if (todo == null)
+            {
+                throw new KeyNotFoundException();
+            }
+            _context.Todos.Remove(todo);
+            await _context.SaveChangesAsync();
+            
         }
 
         public async Task<IEnumerable<TodoDTO>> GetAllTodos()
