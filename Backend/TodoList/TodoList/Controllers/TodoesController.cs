@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TodoList.Mode;
 using TodoList.Mode.DTO;
@@ -12,15 +7,14 @@ using TodoList.Services.Interfaces;
 namespace TodoList.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    [ApiController] // to enable automatic model validation :D 
     public class TodoesController : ControllerBase
     {
-        private readonly TodoDbContext _context;
+
         private readonly ITodoService _todoService;
 
-        public TodoesController(TodoDbContext context, ITodoService todoService)
+        public TodoesController(ITodoService todoService)
         {
-            _context = context;
             _todoService = todoService;
         }
 
@@ -32,6 +26,7 @@ namespace TodoList.Controllers
             return Ok(result);
         }
         // GET: api/Todoes/by-category/{id}
+        [HttpGet("by-category/{id}")]
         public async Task<IActionResult> GetTodosByCategory(int categoryId)
         {
             var result = await _todoService.GetTodosByCategory(categoryId);
@@ -39,49 +34,49 @@ namespace TodoList.Controllers
         }
 
         // GET: api/Todoes/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Todo>> GetTodo(int id)
-        {
-            var todo = await _context.Todos.FindAsync(id);
+        //[HttpGet("{id}")]
+        //public async Task<ActionResult<Todo>> GetTodo(int id)
+        //{
+        //    var todo = await _context.Todos.FindAsync(id);
 
-            if (todo == null)
-            {
-                return NotFound();
-            }
+        //    if (todo == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return todo;
-        }
+        //    return todo;
+        //}
 
         // PUT: api/Todoes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutTodo(int id, Todo todo)
-        {
-            if (id != todo.Id)
-            {
-                return BadRequest();
-            }
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> PutTodo(int id, Todo todo)
+        //{
+        //    if (id != todo.Id)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            _context.Entry(todo).State = EntityState.Modified;
+        //    _context.Entry(todo).State = EntityState.Modified;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!TodoExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        await _context.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!TodoExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
 
         // POST: api/Todoes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -100,7 +95,8 @@ namespace TodoList.Controllers
             }
             catch (ArgumentNullException ex)
             {
-                return BadRequest(new { message = ex.Message });
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                new { message = "An unexpected error occurred.", details = ex.Message });
             }
 
         }
@@ -121,9 +117,6 @@ namespace TodoList.Controllers
 
         }
 
-        private bool TodoExists(int id)
-        {
-            return _context.Todos.Any(e => e.Id == id);
-        }
+
     }
 }

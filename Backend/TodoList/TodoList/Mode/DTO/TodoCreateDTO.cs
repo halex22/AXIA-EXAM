@@ -1,8 +1,11 @@
-﻿namespace TodoList.Mode.DTO
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace TodoList.Mode.DTO
 {
     public class TodoCreateDTO
     {
-        public string Title { get; set; } = null!;
+        [Required(ErrorMessage = "Title is required")] // send a 400 Bad Request automatically 
+        public string Title { get; set; } 
 
         public int? CategoryId { get; set; }
 

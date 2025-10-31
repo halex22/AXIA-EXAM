@@ -15,10 +15,6 @@ namespace TodoList.Services
         }
         public async Task<TodoDTO> CreateNewTodo(TodoCreateDTO rawTodo)
         {
-            if (String.IsNullOrWhiteSpace(rawTodo.Title))
-            {
-                throw new ArgumentNullException($"{nameof(rawTodo.Title)} must be given a value");
-            }
 
             Todo todoToAdd = new Todo
             {
