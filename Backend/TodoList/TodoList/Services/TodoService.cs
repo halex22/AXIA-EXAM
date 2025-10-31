@@ -60,7 +60,11 @@ namespace TodoList.Services
             return new TodoDTO
             {
                 Id = todo.Id,
-                Category = todo.Category,
+                Category = todo.Category == null ? null : new CategoryDTO
+                {
+                    Id = todo.Category.Id,
+                    CategoryName = todo.Category.CategoryName
+                },
                 Completed = todo.Completed,
                 CreatedAt = todo.CreatedAt,
                 Title = todo.Title,

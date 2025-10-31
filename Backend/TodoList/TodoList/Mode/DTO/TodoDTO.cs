@@ -10,6 +10,6 @@
 
         public DateTime? CreatedAt { get; set; }
 
-        public virtual Category? Category { get; set; }
+        public virtual CategoryDTO? Category { get; set; }
     }
 }
