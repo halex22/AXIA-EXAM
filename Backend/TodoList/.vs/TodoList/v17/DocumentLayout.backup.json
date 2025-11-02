@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\Hugo\\Desktop\\AXIA EXAM\\Backend\\TodoList\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{3703A31A-46CC-4438-87CA-A1CFADCF2F11}|TodoList\\TodoList.csproj|c:\\users\\hugo\\desktop\\axia exam\\backend\\todolist\\todolist\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3703A31A-46CC-4438-87CA-A1CFADCF2F11}|TodoList\\TodoList.csproj|solutionrelative:todolist\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3703A31A-46CC-4438-87CA-A1CFADCF2F11}|TodoList\\TodoList.csproj|c:\\users\\hugo\\desktop\\axia exam\\backend\\todolist\\todolist\\controllers\\todoescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3703A31A-46CC-4438-87CA-A1CFADCF2F11}|TodoList\\TodoList.csproj|solutionrelative:todolist\\controllers\\todoescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3703A31A-46CC-4438-87CA-A1CFADCF2F11}|TodoList\\TodoList.csproj|c:\\users\\hugo\\desktop\\axia exam\\backend\\todolist\\todolist\\services\\todoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3703A31A-46CC-4438-87CA-A1CFADCF2F11}|TodoList\\TodoList.csproj|solutionrelative:todolist\\services\\todoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -15,10 +23,6 @@
       "RelativeMoniker": "D:0:0:{3703A31A-46CC-4438-87CA-A1CFADCF2F11}|TodoList\\TodoList.csproj|solutionrelative:todolist\\mode\\todo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3703A31A-46CC-4438-87CA-A1CFADCF2F11}|TodoList\\TodoList.csproj|c:\\users\\hugo\\desktop\\axia exam\\backend\\todolist\\todolist\\controllers\\todoescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3703A31A-46CC-4438-87CA-A1CFADCF2F11}|TodoList\\TodoList.csproj|solutionrelative:todolist\\controllers\\todoescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3703A31A-46CC-4438-87CA-A1CFADCF2F11}|TodoList\\TodoList.csproj|c:\\users\\hugo\\desktop\\axia exam\\backend\\todolist\\todolist\\mode\\dto\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3703A31A-46CC-4438-87CA-A1CFADCF2F11}|TodoList\\TodoList.csproj|solutionrelative:todolist\\mode\\dto\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -29,10 +33,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{3703A31A-46CC-4438-87CA-A1CFADCF2F11}|TodoList\\TodoList.csproj|c:\\users\\hugo\\desktop\\axia exam\\backend\\todolist\\todolist\\services\\interfaces\\itodoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3703A31A-46CC-4438-87CA-A1CFADCF2F11}|TodoList\\TodoList.csproj|solutionrelative:todolist\\services\\interfaces\\itodoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3703A31A-46CC-4438-87CA-A1CFADCF2F11}|TodoList\\TodoList.csproj|c:\\users\\hugo\\desktop\\axia exam\\backend\\todolist\\todolist\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3703A31A-46CC-4438-87CA-A1CFADCF2F11}|TodoList\\TodoList.csproj|solutionrelative:todolist\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,11 +42,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "CategoryDTO.cs",
               "DocumentMoniker": "C:\\Users\\Hugo\\Desktop\\AXIA EXAM\\Backend\\TodoList\\TodoList\\Mode\\DTO\\CategoryDTO.cs",
               "RelativeDocumentMoniker": "TodoList\\Mode\\DTO\\CategoryDTO.cs",
@@ -54,12 +54,11 @@
               "RelativeToolTip": "TodoList\\Mode\\DTO\\CategoryDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-31T21:53:37.17Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-31T21:53:37.17Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "TodoDTO.cs",
               "DocumentMoniker": "C:\\Users\\Hugo\\Desktop\\AXIA EXAM\\Backend\\TodoList\\TodoList\\Mode\\DTO\\TodoDTO.cs",
               "RelativeDocumentMoniker": "TodoList\\Mode\\DTO\\TodoDTO.cs",
@@ -67,12 +66,11 @@
               "RelativeToolTip": "TodoList\\Mode\\DTO\\TodoDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-31T21:37:18.152Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-31T21:37:18.152Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "TodoCreateDTO.cs",
               "DocumentMoniker": "C:\\Users\\Hugo\\Desktop\\AXIA EXAM\\Backend\\TodoList\\TodoList\\Mode\\DTO\\TodoCreateDTO.cs",
               "RelativeDocumentMoniker": "TodoList\\Mode\\DTO\\TodoCreateDTO.cs",
@@ -80,24 +78,24 @@
               "RelativeToolTip": "TodoList\\Mode\\DTO\\TodoCreateDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-31T20:51:10.506Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-31T20:51:10.506Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Hugo\\Desktop\\AXIA EXAM\\Backend\\TodoList\\TodoList\\Program.cs",
               "RelativeDocumentMoniker": "TodoList\\Program.cs",
               "ToolTip": "C:\\Users\\Hugo\\Desktop\\AXIA EXAM\\Backend\\TodoList\\TodoList\\Program.cs",
               "RelativeToolTip": "TodoList\\Program.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAQwC4AAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAADAAAAAAAAAAAAAAADwAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T21:59:44.318Z"
+              "WhenOpened": "2025-10-29T21:59:44.318Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Todo.cs",
               "DocumentMoniker": "C:\\Users\\Hugo\\Desktop\\AXIA EXAM\\Backend\\TodoList\\TodoList\\Mode\\Todo.cs",
               "RelativeDocumentMoniker": "TodoList\\Mode\\Todo.cs",
@@ -105,38 +103,37 @@
               "RelativeToolTip": "TodoList\\Mode\\Todo.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAAUwAkAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T21:53:49.475Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T21:53:49.475Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "TodoService.cs",
               "DocumentMoniker": "C:\\Users\\Hugo\\Desktop\\AXIA EXAM\\Backend\\TodoList\\TodoList\\Services\\TodoService.cs",
               "RelativeDocumentMoniker": "TodoList\\Services\\TodoService.cs",
-              "ToolTip": "C:\\Users\\Hugo\\Desktop\\AXIA EXAM\\Backend\\TodoList\\TodoList\\Services\\TodoService.cs*",
-              "RelativeToolTip": "TodoList\\Services\\TodoService.cs*",
-              "ViewState": "AgIAAC4AAAAAAAAAAAArwEMAAAAoAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Hugo\\Desktop\\AXIA EXAM\\Backend\\TodoList\\TodoList\\Services\\TodoService.cs",
+              "RelativeToolTip": "TodoList\\Services\\TodoService.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAYwEIAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-29T21:34:30.949Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "TodoesController.cs",
               "DocumentMoniker": "C:\\Users\\Hugo\\Desktop\\AXIA EXAM\\Backend\\TodoList\\TodoList\\Controllers\\TodoesController.cs",
               "RelativeDocumentMoniker": "TodoList\\Controllers\\TodoesController.cs",
               "ToolTip": "C:\\Users\\Hugo\\Desktop\\AXIA EXAM\\Backend\\TodoList\\TodoList\\Controllers\\TodoesController.cs",
               "RelativeToolTip": "TodoList\\Controllers\\TodoesController.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAowBwAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAAB0AAAAAAAAAAAA3wBQAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-29T21:33:42.484Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "ITodoService.cs",
               "DocumentMoniker": "C:\\Users\\Hugo\\Desktop\\AXIA EXAM\\Backend\\TodoList\\TodoList\\Services\\Interfaces\\ITodoService.cs",
               "RelativeDocumentMoniker": "TodoList\\Services\\Interfaces\\ITodoService.cs",
@@ -144,8 +141,7 @@
               "RelativeToolTip": "TodoList\\Services\\Interfaces\\ITodoService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-28T21:44:58.378Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-28T21:44:58.378Z"
             }
           ]
         }

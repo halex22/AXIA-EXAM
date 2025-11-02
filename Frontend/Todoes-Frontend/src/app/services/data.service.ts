@@ -10,10 +10,19 @@ export class DataService {
   
   filter = signal<Category | null>(null);
 
+  private readonly baseUrl = 'https://localhost:7065/api/'
+
   displayedTodos = computed(() => {
     if (!this.filter()) return this.todoList()
     return this.todoList().filter(t => t.category.id === this.filter()!.id)
   })
 
-  constructor() { }
+  constructor() { 
+    this.loadTodos()
+  }
+
+  loadTodos() {
+    return fetch(`${this.baseUrl}Todoes`).then(res => res.json())
+    .then(data => this.todoList.set(data))
+  }
 }

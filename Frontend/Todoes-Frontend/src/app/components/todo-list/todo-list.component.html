@@ -1,1 +1,6 @@
-<p>todo-list works!</p>
+
+<div>
+  @for (todo of todos(); track $index) {
+    <p>{{todo.title}}</p>
+  }
+</div>
