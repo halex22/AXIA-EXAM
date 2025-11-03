@@ -1,1 +1,8 @@
-<p>todo-categories works!</p>
+@for (cat of catService.categories; track $index) {
+  <li 
+    (click)="setFilter(cat.id)" 
+    class="todo-element"
+    [class.selected-filter]= "cat.id === dataService.filter()?.id">
+    {{cat.name}}
+  </li>
+}

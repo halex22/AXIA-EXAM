@@ -1,12 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { CategoryService } from '../../services/category.service';
+import { DataService } from '../../services/data.service';
 
 @Component({
-  selector: 'app-todo-categories',
+  selector: 'ul[categoryList]',
   standalone: true,
   imports: [],
   templateUrl: './todo-categories.component.html',
   styleUrl: './todo-categories.component.scss'
 })
 export class TodoCategoriesComponent {
+
+  catService = inject(CategoryService)
+  dataService = inject(DataService)
+
+  clearFilter(){
+    this.dataService.filter.set(null)
+  }
+
+  setFilter(id: number){
+    const cat = this.catService.getCategoryId(id)
+    if (!cat) return
+    this.dataService.filter.set(cat)
+  }
 
 }
