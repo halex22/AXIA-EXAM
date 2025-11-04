@@ -6,7 +6,11 @@
 
 <main>
   <section>
-    <ul categoryList></ul>
+    @if (dataService.todoList()) {
+      <ul categoryList></ul>
+    } @else {
+      
+    }
   </section>
 
   <section>
