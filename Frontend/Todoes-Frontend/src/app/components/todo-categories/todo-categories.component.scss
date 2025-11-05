@@ -23,3 +23,79 @@
     position: relative;
 }
 
+
+
+$colors: (
+  blue: (100: #dbeafe, 800: #1e40af, 900: #1e3a8a, 300: #93c5fd, 400: #60a5fa, 200: #bfdbfe),
+  gray: (100: #f3f4f6, 800: #1f2937, 700: #374151, 300: #d1d5db, 400: #9ca3af, 200: #e5e7eb, 600: #4b5563),
+  red: (100: #fee2e2, 800: #991b1b, 900: #7f1d1d, 300: #fca5a5, 400: #f87171, 200: #fecaca),
+  green: (100: #dcfce7, 800: #166534, 900: #14532d, 300: #86efac, 400: #4ade80, 200: #bbf7d0),
+  yellow: (100: #fef9c3, 800: #854d0e, 900: #713f12, 300: #fde68a, 400: #facc15, 200: #fef08a),
+  indigo: (100: #e0e7ff, 800: #3730a3, 900: #312e81, 300: #a5b4fc, 400: #818cf8, 200: #c7d2fe),
+  purple: (100: #f3e8ff, 800: #6b21a8, 900: #581c87, 300: #d8b4fe, 400: #c084fc, 200: #e9d5ff),
+  pink: (100: #fce7f3, 800: #9d174d, 900: #831843, 300: #f9a8d4, 400: #f472b6, 200: #fbcfe8)
+);
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.25rem 0.5rem;
+  margin-right: 0.5rem;
+  border-radius: 0.125rem;
+
+  .badge__close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem;
+    margin-left: 0.5rem;
+    font-size: 0.875rem;
+    background: transparent;
+    border: none;
+    border-radius: 0.125rem;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+
+    svg {
+      width: 0.5rem;
+      height: 0.5rem;
+      stroke: currentColor;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 2;
+    }
+  }
+
+  // Generate color variants dynamically
+  @each $name, $shades in $colors {
+    &--#{$name} {
+      background-color: map-get($shades, 100);
+      color: map-get($shades, 800);
+
+      .badge__close {
+        color: map-get($shades, 400);
+
+        &:hover {
+          background-color: map-get($shades, 200);
+          color: map-get($shades, 900);
+        }
+      }
+
+      // Dark mode
+      @media (prefers-color-scheme: dark) {
+        background-color: map-get($shades, 900);
+        color: map-get($shades, 300);
+
+        .badge__close {
+          &:hover {
+            background-color: map-get($shades, 800);
+            color: map-get($shades, 300);
+          }
+        }
+      }
+    }
+  }
+}
+

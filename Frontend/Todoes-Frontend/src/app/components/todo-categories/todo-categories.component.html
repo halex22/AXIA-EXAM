@@ -1,7 +1,25 @@
 @for (cat of catService.categories; track $index) {
-<li (click)="setFilter(cat.id)" class="todo-element" [class.selected-filter]="cat.id === dataService.filter()?.id">
+<!-- <li (click)="setFilter(cat.id)" class="todo-element" [class.selected-filter]="cat.id === dataService.filter()?.id">
   {{cat.name}}
 
-</li>
+</li> -->
+}
+
+@for (cat of catService.categories; track $index) {
+  <li >
+    <span class="badge " id="badge-dismiss-blue" 
+      [ngStyle]="{ 'background-color': catService.getCategoryColors(cat.name).background,
+        'color': catService.getCategoryColors(cat.name).text
+      }">
+      {{cat.name}}
+
+      <button type="button" class="badge__close" data-dismiss-target="#badge-dismiss-blue" aria-label="Remove">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
+          <path d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+        </svg>
+      </button>
+    </span>
+  </li>
 
 }
+

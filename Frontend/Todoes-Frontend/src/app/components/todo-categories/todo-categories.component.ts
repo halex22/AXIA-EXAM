@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { CategoryService } from '../../services/category.service';
 import { DataService } from '../../services/data.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'ul[categoryList]',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './todo-categories.component.html',
   styleUrl: './todo-categories.component.scss'
 })
