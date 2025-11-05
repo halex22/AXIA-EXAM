@@ -1,3 +1,17 @@
 <form action="" [formGroup]="newTodoForm">
+  <div>
+    <label for="">Todo Text</label>
+    <input type="text">
+  </div>
 
+  <div>
+    <label for="Category">Category</label>
+    <select name="" id=""> 
+      @for (cat of categories.categories; track $index) {
+        <option [value]="cat.id">{{cat.name}}</option>
+      }
+    </select>
+  </div>
+
+  <button class="save-btn">save</button>
 </form>

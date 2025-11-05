@@ -6,11 +6,9 @@
 
 <main>
   <section>
-    @if (dataService.todoList()) {
-      <ul categoryList></ul>
-    } @else {
-      
-    }
+    <ul categoryList></ul>
+     <app-loading></app-loading> 
+     <app-todo-create></app-todo-create>
   </section>
 
   <section>

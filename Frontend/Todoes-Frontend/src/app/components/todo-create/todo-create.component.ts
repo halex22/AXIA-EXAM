@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {FormControl, ReactiveFormsModule, FormGroup, Validators} from '@angular/forms'
+import { CategoryService } from '../../services/category.service';
 
 @Component({
   selector: 'app-todo-create',
@@ -9,6 +10,9 @@ import {FormControl, ReactiveFormsModule, FormGroup, Validators} from '@angular/
   styleUrl: './todo-create.component.scss'
 })
 export class TodoCreateComponent {
+
+  categories = inject(CategoryService);
+
   newTodoForm = new FormGroup({
     name: new FormControl('', {
       validators: []
