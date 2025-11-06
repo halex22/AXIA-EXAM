@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { inject } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { Todo } from '../../model/todo';
+import { CategoryService } from '../../services/category.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -12,6 +13,7 @@ import { Todo } from '../../model/todo';
 })
 export class TodoListComponent implements OnInit {
   service = inject(DataService)
+  catService = inject(CategoryService)
   todos = this.service.displayedTodos;
 
   ngOnInit(){

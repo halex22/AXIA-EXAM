@@ -1,7 +1,11 @@
 :host {
     display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
+    // display: grid;
+    
+    // grid-template-columns: repeat(auto-max(300px, 1fr));
 }
 
 .todo-element {
@@ -68,34 +72,6 @@ $colors: (
     }
   }
 
-  // Generate color variants dynamically
-  @each $name, $shades in $colors {
-    &--#{$name} {
-      background-color: map-get($shades, 100);
-      color: map-get($shades, 800);
 
-      .badge__close {
-        color: map-get($shades, 400);
-
-        &:hover {
-          background-color: map-get($shades, 200);
-          color: map-get($shades, 900);
-        }
-      }
-
-      // Dark mode
-      @media (prefers-color-scheme: dark) {
-        background-color: map-get($shades, 900);
-        color: map-get($shades, 300);
-
-        .badge__close {
-          &:hover {
-            background-color: map-get($shades, 800);
-            color: map-get($shades, 300);
-          }
-        }
-      }
-    }
-  }
 }
 
