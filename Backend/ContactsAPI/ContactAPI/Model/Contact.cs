@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ContactsAPI.Model;
+namespace ContactAPI.Model;
 
 public partial class Contact
 {
@@ -13,5 +13,9 @@ public partial class Contact
 
     public DateTime? CreatedAt { get; set; }
 
-    public virtual ICollection<GroupContact> GroupContacts { get; set; } = new List<GroupContact>();
+    public string? Email { get; set; }
+
+    public string? Phone { get; set; }
+
+    public virtual ICollection<Group> Groups { get; set; } = new List<Group>();
 }

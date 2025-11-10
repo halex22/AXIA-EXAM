@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace ContactsAPI.Model;
+namespace ContactAPI.Model;
 
-public partial class ContactDbContext : DbContext
+public partial class ExamDbContext : DbContext
 {
-    public ContactDbContext()
+    public ExamDbContext()
     {
     }
 
-    public ContactDbContext(DbContextOptions<ContactDbContext> options)
+    public ExamDbContext(DbContextOptions<ExamDbContext> options)
         : base(options)
     {
     }
@@ -19,19 +19,17 @@ public partial class ContactDbContext : DbContext
 
     public virtual DbSet<Group> Groups { get; set; }
 
-    public virtual DbSet<GroupContact> GroupContacts { get; set; }
-
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseNpgsql("Host=localhost;Username=postgres;Password=secret;Port=5432;Database=contact_db");
+        => optionsBuilder.UseNpgsql("Host=localhost;Username=postgres;Password=P0st@Lu25!;Port=5432;Database=examDb");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Contact>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("contacts_pkey");
+            entity.HasKey(e => e.Id).HasName("contact_pkey");
 
-            entity.ToTable("contacts");
+            entity.ToTable("contact");
 
             entity.HasIndex(e => new { e.FirstName, e.LastName }, "unique_fullname").IsUnique();
 
@@ -40,12 +38,21 @@ public partial class ContactDbContext : DbContext
                 .HasDefaultValueSql("CURRENT_TIMESTAMP")
                 .HasColumnType("timestamp without time zone")
                 .HasColumnName("created_at");
+            entity.Property(e => e.Email)
+                .HasMaxLength(200)
+                .HasColumnName("email");
             entity.Property(e => e.FirstName)
-                .HasMaxLength(255)
+                .HasMaxLength(100)
                 .HasColumnName("first_name");
             entity.Property(e => e.LastName)
-                .HasMaxLength(255)
+                .HasMaxLength(100)
                 .HasColumnName("last_name");
+            entity.Property(e => e.Phone)
+                .HasMaxLength(15)
+                .HasColumnName("phone");
+            entity.HasMany(c => c.Groups)
+            .WithMany(g => g.Contacts)
+            .UsingEntity(j => j.ToTable("groups_contact"));
         });
 
         modelBuilder.Entity<Group>(entity =>
@@ -60,27 +67,25 @@ public partial class ContactDbContext : DbContext
             entity.Property(e => e.Name)
                 .HasMaxLength(255)
                 .HasColumnName("name");
-        });
 
-        modelBuilder.Entity<GroupContact>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("group_contact_pkey");
-
-            entity.ToTable("group_contact");
-
-            entity.HasIndex(e => new { e.GroupId, e.ContactId }, "unique_group_contact").IsUnique();
-
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.ContactId).HasColumnName("contact_id");
-            entity.Property(e => e.GroupId).HasColumnName("group_id");
-
-            entity.HasOne(d => d.Contact).WithMany(p => p.GroupContacts)
-                .HasForeignKey(d => d.ContactId)
-                .HasConstraintName("group_contact_contact_id_fkey");
-
-            entity.HasOne(d => d.Group).WithMany(p => p.GroupContacts)
-                .HasForeignKey(d => d.GroupId)
-                .HasConstraintName("group_contact_group_id_fkey");
+            entity.HasMany(d => d.Contacts).WithMany(p => p.Groups)
+                .UsingEntity<Dictionary<string, object>>(
+                    "GroupsContact",
+                    r => r.HasOne<Contact>().WithMany()
+                        .HasForeignKey("ContactId")
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("groups_contact_contact_id_fkey"),
+                    l => l.HasOne<Group>().WithMany()
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("groups_contact_group_id_fkey"),
+                    j =>
+                    {
+                        j.HasKey("GroupId", "ContactId").HasName("unique_group_contact");
+                        j.ToTable("groups_contact");
+                        j.IndexerProperty<int>("GroupId").HasColumnName("group_id");
+                        j.IndexerProperty<int>("ContactId").HasColumnName("contact_id");
+                    });
         });
 
         OnModelCreatingPartial(modelBuilder);
