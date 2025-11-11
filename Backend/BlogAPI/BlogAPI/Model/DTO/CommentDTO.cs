@@ -12,6 +12,6 @@
 
         public DateTime? CreatedAt { get; set; }
 
-        public virtual PostDTO? Post { get; set; }
+        // public virtual PostDTO? Post { get; set; }
     }
 }
