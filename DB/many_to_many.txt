@@ -1,0 +1,65 @@
+public class AppDbContext : DbContext
+{
+    public DbSet<Group> Groups { get; set; } = null!;
+    public DbSet<Contact> Contacts { get; set; } = null!;
+    public DbSet<GroupContact> GroupContacts { get; set; } = null!;
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        // Optional if you use explicit join entity
+        modelBuilder.Entity<GroupContact>()
+            .HasIndex(gc => new { gc.GroupId, gc.ContactId })
+            .IsUnique();
+
+        modelBuilder.Entity<GroupContact>()
+            .HasOne(gc => gc.Group)
+            .WithMany(g => g.GroupContacts)
+            .HasForeignKey(gc => gc.GroupId);
+
+        modelBuilder.Entity<GroupContact>()
+            .HasOne(gc => gc.Contact)
+            .WithMany(c => c.GroupContacts)
+            .HasForeignKey(gc => gc.ContactId);
+    }
+}
+
+
+1. 
+
+// Fetch existing group and contact
+var group = await _context.Groups.FirstAsync(g => g.Name == "Friends");
+var contact = await _context.Contacts.FirstAsync(c => c.FirstName == "Alice");
+
+// Add contact to the group
+group.Contacts.Add(contact);
+await _context.SaveChangesAsync();
+
+
+2.
+
+var group = await _context.Groups.FirstAsync(g => g.Name == "Friends");
+var contact = await _context.Contacts.FirstAsync(c => c.FirstName == "Alice");
+
+var link = new GroupContact
+{
+    GroupId = group.Id,
+    ContactId = contact.Id
+};
+
+_context.GroupContacts.Add(link);
+await _context.SaveChangesAsync();
+
+
+3.
+
+var group = await _context.Groups
+    .Include(g => g.Contacts)
+    .FirstOrDefaultAsync(g => g.Id == groupId);
+
+if (group != null)
+{
+    foreach (var contact in group.Contacts)
+    {
+        Console.WriteLine($"{contact.FirstName} {contact.LastName}");
+    }
+}
