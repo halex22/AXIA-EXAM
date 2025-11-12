@@ -23,6 +23,7 @@ namespace ContactsAPI_V2
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddScoped<IContactService, ContactService>();
+            builder.Services.AddScoped<IGroupService, GroupSerice>();
 
             builder.Services.AddCors(options =>
                 options.AddPolicy("AllowAllOrigins",
