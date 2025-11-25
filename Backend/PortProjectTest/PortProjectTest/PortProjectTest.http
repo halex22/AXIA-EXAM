@@ -1,0 +1,6 @@
+@PortProjectTest_HostAddress = http://localhost:5042
+
+GET {{PortProjectTest_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
